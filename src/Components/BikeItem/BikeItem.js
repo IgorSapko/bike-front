@@ -1,12 +1,22 @@
 import React, { Suspense, useEffect } from "react";
+import { updateStatusBike, deleteBike } from "../apiService";
 
-const BikeItem = ({ bike }) => {
+const BikeItem = ({ bike, deleteBikeFromList, getDataStatus }) => {
   const statusVariants = ["Available", "Unavailable", "Busy"];
-  const handleChangeStatus = (id, e) => {
-    console.log(id);
-    console.log(e.target.value);
+  const handleChangeStatus = async (id, e) => {
+    const status = e.target.value;
+    const { data } = await updateStatusBike(id, status);
+    if(data){
+      getDataStatus(data)
+    }
+    console.log(data);
   };
-
+  const handleDeleteBike = async (id) => {
+    const deleteResult = await deleteBike(id);
+    if (deleteResult) {
+      deleteBikeFromList(deleteResult.data);
+    }
+  };
   return (
     <li key={bike._id}>
       <div>
@@ -16,6 +26,7 @@ const BikeItem = ({ bike }) => {
       </div>
       <p>{bike.id}</p>
       <p>status</p>
+      <p>{bike.price} UAH/hr.</p>
 
       <select onChange={(e) => handleChangeStatus(bike._id, e)}>
         <option
@@ -35,6 +46,7 @@ const BikeItem = ({ bike }) => {
           }
         })}
       </select>
+      <button onClick={() => handleDeleteBike(bike._id)}>X</button>
     </li>
   );
 };
