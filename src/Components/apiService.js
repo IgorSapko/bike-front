@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const URL = "https://bike-back.herokuapp.com/";
-const URL = "http://localhost:8080/";
+const URL = "https://bike-back.herokuapp.com/";
+// const URL = "http://localhost:8080/";
 export const getBikeCollection = async () => {
   try {
     const { data } = await axios.get(URL);
