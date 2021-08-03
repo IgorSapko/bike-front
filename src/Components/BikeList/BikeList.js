@@ -2,35 +2,57 @@ import React, { Suspense, useState, useEffect } from "react";
 import BikeItem from "../BikeItem/BikeItem";
 import { getBikeCollection } from "../apiService";
 
-const BikeList = ({ data }) => {
-  const [bikesList, setBikeList] = useState([]);
+const BikeList = ({ createdBikeAndStatistics, getStatistics }) => {
+  const [bikeCollectionAndStatistics, setBikeCollectionAndStatistics] =
+    useState({});
   useEffect(() => {
     async function fetchData() {
-      setBikeList(await getBikeCollection());
+      const bikeCollectionAndStatistics = await getBikeCollection();
+      setBikeCollectionAndStatistics(bikeCollectionAndStatistics);
+      getStatistics(bikeCollectionAndStatistics.statistics);
     }
     fetchData();
-    console.log("useeff");
   }, []);
+  useEffect(() => {
+    if (createdBikeAndStatistics) {
+      setBikeCollectionAndStatistics((prev) => {
+        prev.bikes.push(createdBikeAndStatistics.bike);
+        return {
+          bikes: [...prev.bikes],
+          statistics: createdBikeAndStatistics.statistics,
+        };
+      });
+      getStatistics(createdBikeAndStatistics.statistics);
+    }
+  }, [createdBikeAndStatistics]);
 
-  const deleteBikeFromList = (bike) => {
-    const updatedBikeList = bikesList.filter((elem) => elem._id !== bike._id);
-    setBikeList(updatedBikeList);
+  const deleteBikeFromList = (data) => {
+    const updatedBikeList = bikeCollectionAndStatistics.bikes.filter(
+      (elem) => elem._id !== data.bike._id
+    );
+    setBikeCollectionAndStatistics({
+      bikes: updatedBikeList,
+      statistics: data.statistics,
+    });
+    getStatistics(data.statistics);
   };
-  const getDataStatus = (bike) => {
-    const updatedBokeList = bikesList.map((elem) => {
-      if (elem._id === bike._id) {
-        return bike;
+  const getDataStatus = (data) => {
+    const updatedBikeList = bikeCollectionAndStatistics.bikes.map((elem) => {
+      if (elem._id === data.bike._id) {
+        return data.bike;
       }
       return elem;
     });
-    setBikeList(updatedBokeList);
+    setBikeCollectionAndStatistics({
+      bikes: updatedBikeList,
+      statistics: data.statistics,
+    });
+    getStatistics(data.statistics);
   };
-  console.log(bikesList);
-  data && bikesList.push(data);
   return (
     <ul>
-      {bikesList &&
-        bikesList.map((elem) => (
+      {bikeCollectionAndStatistics.bikes &&
+        bikeCollectionAndStatistics.bikes.map((elem) => (
           <BikeItem
             key={elem._id}
             bike={elem}

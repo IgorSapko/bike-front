@@ -12,25 +12,27 @@ export const getBikeCollection = async () => {
 };
 export const addBike = async (bikeItem) => {
   try {
-    const bike = await axios.post(URL, bikeItem);
-    return bike;
+    const addedBikeAndStatistics = await axios.post(URL, bikeItem);
+    return addedBikeAndStatistics;
   } catch (error) {
     alert(error);
   }
 };
 export const updateStatusBike = async (id, status) => {
   try {
-    const bike = await axios.patch(URL, { id, status });
-    return bike;
+    const updatedBikeAndStatistics = await axios.patch(URL, { id, status });
+    return updatedBikeAndStatistics;
   } catch (error) {
     alert(error);
   }
 };
 export const deleteBike = async (id) => {
   try {
-    const bike = await axios.delete(URL, { data: { id } });
-    return bike;
+    const deletedBikeAndStatistics = await axios.delete(URL, { data: { id } });
+    return deletedBikeAndStatistics;
   } catch (error) {
     alert(error);
   }
 };
+
+

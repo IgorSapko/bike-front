@@ -2,7 +2,7 @@ import React, { Suspense, useState, useEffect } from "react";
 import styles from "./CreatingComponent.module.css";
 import { addBike } from "../apiService";
 
-const CreatingComponent = ({ getData }) => {
+const CreatingComponent = ({ getCreatedBikeAndStatistics }) => {
   const initialState = {
     name: "",
     type: "",
@@ -35,10 +35,12 @@ const CreatingComponent = ({ getData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resultAdd = await addBike(state);
-    if (resultAdd) {
-      getData(resultAdd.data);
-    }
+    const result = await addBike(state);
+    if(result){const {data} = result
+    if (data.bike) {
+      getCreatedBikeAndStatistics(data);
+    }}
+    
     handleClearState();
   };
 

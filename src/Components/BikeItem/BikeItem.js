@@ -5,16 +5,18 @@ const BikeItem = ({ bike, deleteBikeFromList, getDataStatus }) => {
   const statusVariants = ["Available", "Unavailable", "Busy"];
   const handleChangeStatus = async (id, e) => {
     const status = e.target.value;
-    const { data } = await updateStatusBike(id, status);
-    if(data){
-      getDataStatus(data)
+    const result = await updateStatusBike(id, status);
+    if (result) {
+      const { data } = result;
+      if (data.bike) {
+        getDataStatus(data);
+      }
     }
-    console.log(data);
   };
   const handleDeleteBike = async (id) => {
-    const deleteResult = await deleteBike(id);
-    if (deleteResult) {
-      deleteBikeFromList(deleteResult.data);
+    const { data } = await deleteBike(id);
+    if (data.bike) {
+      deleteBikeFromList(data);
     }
   };
   return (

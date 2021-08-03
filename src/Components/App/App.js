@@ -1,20 +1,33 @@
-import React, { Suspense, useEffect, useState, useContext, createContext } from "react";
+import React, { useState } from "react";
 import CreatingComponent from "../CreatingComponent/CreatingComponent";
-import BikeList from "../BikeList/BikeList"; 
-import {DataProvider} from '../DataContext'
+import BikeList from "../BikeList/BikeList";
+import Statistics from "../Statistics/Statistics";
 
 const App = () => {
-  const [data, setData] = useState(null);
-  
-  const getData = (data) => {
-    console.log(data);
-    setData(data);
+  const [createdBikeAndStatistics, setСreatedBikeAndStatistics] =
+    useState(null);
+  const [statisticsApp, setStatisticsApp] = useState(null);
+
+  const getCreatedBikeAndStatistics = (data) => {
+    setСreatedBikeAndStatistics(data);
+  };
+  const getStatistics = (statistics) => {
+    setStatisticsApp(statistics);
   };
   return (
-    <DataProvider>
-      <CreatingComponent getData={getData} />
-      <BikeList data={data} />
-    </DataProvider>
+    <>
+      <CreatingComponent
+        getCreatedBikeAndStatistics={getCreatedBikeAndStatistics}
+      />
+      <BikeList
+        createdBikeAndStatistics={createdBikeAndStatistics}
+        getStatistics={getStatistics}
+      />
+      <Statistics
+        createdBikeAndStatistics={createdBikeAndStatistics}
+        statistics={statisticsApp}
+      />
+    </>
   );
 };
 
