@@ -1,0 +1,18 @@
+.footer{
+padding: 10px;
+width: 1152px;
+height: 42px;
+display: flex;
+background: #696969;
+font-family: Saira;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 31px;
+color: #CBCACA;
+}
+
+.footerTextName{
+    color: #FFFFFF;
+    margin-left: 10px;
+}

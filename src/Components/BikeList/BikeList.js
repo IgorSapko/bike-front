@@ -1,6 +1,7 @@
 import React, { Suspense, useState, useEffect } from "react";
 import BikeItem from "../BikeItem/BikeItem";
-import { getBikeCollection } from "../apiService";
+import { getBikeCollection } from "../../api/apiService";
+import styles from "./BikeList.module.css";
 
 const BikeList = ({ createdBikeAndStatistics, getStatistics }) => {
   const [bikeCollectionAndStatistics, setBikeCollectionAndStatistics] =
@@ -50,7 +51,7 @@ const BikeList = ({ createdBikeAndStatistics, getStatistics }) => {
     getStatistics(data.statistics);
   };
   return (
-    <ul>
+    <ul className={styles.bikeList}>
       {bikeCollectionAndStatistics.bikes &&
         bikeCollectionAndStatistics.bikes.map((elem) => (
           <BikeItem

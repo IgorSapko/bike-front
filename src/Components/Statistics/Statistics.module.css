@@ -1,0 +1,28 @@
+.statistics{
+margin-top: 10px;
+font-family: Saira;
+font-style: normal;
+color: #000000;
+}
+
+.statisticsTitle{
+font-weight: bold;
+font-size: 18px;
+line-height: 28px;
+text-transform: uppercase;
+}
+
+p{
+font-weight: normal;
+font-size: 14px;
+line-height: 22px;
+text-transform: capitalize;
+}
+
+span{
+font-weight: bold;
+}
+
+.lastParagraph{
+    text-transform: none;
+}

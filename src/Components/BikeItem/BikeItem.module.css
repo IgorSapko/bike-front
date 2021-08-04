@@ -1,0 +1,96 @@
+.bikeItem{
+ width: 618px;
+height: 83px;
+box-sizing: border-box;
+border-radius: 10px;
+display: flex;
+justify-content: space-between;
+padding: 12px;
+}
+
+p{
+font-family: Saira;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 22px;
+color: #333333;
+text-transform: uppercase;
+display: inline-block;
+}
+
+.name{
+font-weight: bold;
+}
+
+.id{
+display: block;
+font-size: 8px;
+line-height: 13px;
+color: #717171;
+}
+
+.status{
+text-transform: uppercase;
+margin-right: 18px;
+}
+
+select{
+background: #E8E8E8;
+border: none;
+/* -webkit-appearance: none; */
+}
+
+select:focus {
+    border: none;
+}
+
+.price{
+font-size: 24px;
+line-height: 16px;
+text-transform:none;
+
+}
+
+.wrapperLeft{
+    padding-left: 6px;
+
+}
+
+.wrapperRight{
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+flex-direction: column;
+}
+
+.button{
+width: 8px;
+height: 8px;
+background: url('../../svg/delete.svg');
+background-repeat: no-repeat;
+background-position: center;
+border: none;
+}
+
+.busy{
+background: #E8E8E8;
+border: 2px solid #F2994A;
+
+}
+
+.unavailable{
+background: #E8E8E8;
+opacity: 0.5;
+border: 2px solid #EB5757;
+
+}
+
+.available{
+background: #E8E8E8;
+border: 2px solid #6FCF97;    
+
+}
+
+
+
