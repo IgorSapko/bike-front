@@ -5,7 +5,15 @@
   }
 
   .totalWrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+     display: grid;
+     grid-template-rows: 42px 252px 1fr 42px;
+    grid-template-columns: 639px 513px;
+    grid-template-areas: 
+    "header header"
+    "ul div1"
+    "ul div2"
+    "footer footer";
+    margin: 0 auto;
+     }
+
+ 

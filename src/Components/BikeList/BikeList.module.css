@@ -1,10 +1,13 @@
 .bikeList{
-    display: inline-block;
-min-width:639px;
+/* display: inline-block; */
 border-right: 1px solid #C4C4C4;
-/* transform: rotate(-90deg); */
+padding-right: 10px;
+padding-left: 10px;
 margin-top: 10px;
-
+width: fit-content;
+/* height: 100vh; */
+/* break-after:auto */
+grid-area: ul
 }
 
 .bikeList>li:not(:last-child){

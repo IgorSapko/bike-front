@@ -3,10 +3,10 @@ import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <p className={styles.footerTextDeveloper}>Developer: </p>
       <p className={styles.footerTextName}>Igor Sapko </p>
-    </div>
+    </footer>
   );
 };
 

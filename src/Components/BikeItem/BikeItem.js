@@ -5,19 +5,30 @@ import styles from "./BikeItem.module.css";
 const BikeItem = ({ bike, deleteBikeFromList, getDataStatus }) => {
   const statusVariants = ["Available", "Unavailable", "Busy"];
   const handleChangeStatus = async (id, e) => {
-    const status = e.target.value;
-    const result = await updateStatusBike(id, status);
-    if (result) {
-      const { data } = result;
-      if (data.bike) {
-        getDataStatus(data);
+    try {
+      const status = e.target.value;
+      const result = await updateStatusBike(id, status);
+      if (result) {
+        const { data } = result;
+        if (data.bike) {
+          getDataStatus(data);
+        }
       }
+    } catch (error) {
+      alert(error);
     }
   };
   const handleDeleteBike = async (id) => {
-    const { data } = await deleteBike(id);
-    if (data.bike) {
-      deleteBikeFromList(data);
+    try {
+      const result = await deleteBike(id);
+      if (result) {
+        const { data } = result;
+        if (data.bike) {
+          deleteBikeFromList(data);
+        }
+      }
+    } catch (error) {
+      alert(error);
     }
   };
   return (

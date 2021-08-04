@@ -4,7 +4,7 @@ height: 42px;
 background-color: #696969;
 padding: 4px 16px;
 display: block;
-
+grid-area: header;
 }
 
 .headerText{

@@ -38,7 +38,6 @@ margin-right: 18px;
 select{
 background: #E8E8E8;
 border: none;
-/* -webkit-appearance: none; */
 }
 
 select:focus {
@@ -53,8 +52,7 @@ text-transform:none;
 }
 
 .wrapperLeft{
-    padding-left: 6px;
-
+padding-left: 6px;
 }
 
 .wrapperRight{

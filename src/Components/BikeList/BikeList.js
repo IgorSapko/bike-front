@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import BikeItem from "../BikeItem/BikeItem";
 import { getBikeCollection } from "../../api/apiService";
 import styles from "./BikeList.module.css";
@@ -10,7 +10,7 @@ const BikeList = ({ createdBikeAndStatistics, getStatistics }) => {
     async function fetchData() {
       const bikeCollectionAndStatistics = await getBikeCollection();
       setBikeCollectionAndStatistics(bikeCollectionAndStatistics);
-      getStatistics(bikeCollectionAndStatistics.statistics);
+      getStatistics(bikeCollectionAndStatistics?.statistics);
     }
     fetchData();
   }, []);
@@ -52,7 +52,7 @@ const BikeList = ({ createdBikeAndStatistics, getStatistics }) => {
   };
   return (
     <ul className={styles.bikeList}>
-      {bikeCollectionAndStatistics.bikes &&
+      {bikeCollectionAndStatistics?.bikes &&
         bikeCollectionAndStatistics.bikes.map((elem) => (
           <BikeItem
             key={elem._id}

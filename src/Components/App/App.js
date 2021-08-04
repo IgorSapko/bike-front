@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer'
+import React, { useState, Suspense } from "react";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import CreatingComponent from "../CreatingComponent/CreatingComponent";
 import BikeList from "../BikeList/BikeList";
 import Statistics from "../Statistics/Statistics";
-import styles from './App.module.css'
+import Loader from '../Loader/Loader';
+import styles from "./App.module.css";
 
 const App = () => {
   const [createdBikeAndStatistics, setСreatedBikeAndStatistics] =
     useState(null);
   const [statisticsApp, setStatisticsApp] = useState(null);
-
   const getCreatedBikeAndStatistics = (data) => {
     setСreatedBikeAndStatistics(data);
   };
@@ -19,8 +19,9 @@ const App = () => {
   };
   return (
     <div className={styles.totalWrapper}>
-    <Header/>
-            <BikeList
+      <Header />
+      <Suspense fallback={<Loader onLoad={true} />}>
+      <BikeList
         createdBikeAndStatistics={createdBikeAndStatistics}
         getStatistics={getStatistics}
       />
@@ -31,7 +32,8 @@ const App = () => {
         createdBikeAndStatistics={createdBikeAndStatistics}
         statistics={statisticsApp}
       />
-      <Footer/>
+      </Suspense>
+      <Footer />
     </div>
   );
 };

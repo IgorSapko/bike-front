@@ -1,8 +1,9 @@
 .creatingComponentWrapprer{
-       width: 480px;
+    width: 480px;
     height: 342px;
     margin-left: 10px;
     margin-top: 10px;
+    grid-area: div1
 }
 
 .inputsList{
@@ -22,6 +23,11 @@
     justify-content: space-around;
 }
 
+.inputsListItem:last-child>input{
+padding-bottom: 46px;
+
+}
+
 .input{
 width: 100%;
 height: 100%;
@@ -37,18 +43,17 @@ padding-left: 26px;
 }
 
 .input:nth-child(2n-1){
-    margin-right: 11px;
+margin-right: 11px;
 }
 
 .input:last-child {
-    margin-right: 0px;
+margin-right: 0px;
 
 }
 
 .inputsListItem:not(:last-child) {
-    margin-bottom: 10px;
-  
-}
+margin-bottom: 10px;
+  }
 
 .inputDescr{
    width: 100%; 
@@ -73,7 +78,7 @@ padding: 4px 22px;
 height: 24px;
 background: #696969;
 border-radius: 5px;
-/* margin: 0px 11px; */
 text-transform: uppercase;
 color: #FFFFFF;
 }
+
